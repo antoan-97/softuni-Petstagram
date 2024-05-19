@@ -3,6 +3,10 @@ const photoManager = require('../managers/photoManager');
 
 const router = require('express').Router();
 
+router.get('/', (req,res) =>{
+    res.render('photos');
+})
+
 router.get('/create', (req, res) => {
     res.render('photos/create');
 });
