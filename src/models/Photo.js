@@ -25,7 +25,8 @@ const photoSchema = new mongoose.Schema({
     type:mongoose.Types.ObjectId,
     ref:'User',
   },
-  comments:{
+  comments:[
+    {
     user:{
         type:mongoose.Types.ObjectId,
         ref:'User',
@@ -33,7 +34,8 @@ const photoSchema = new mongoose.Schema({
     message:{
         type:String,
     },
-  },
+  }
+]
 });
 
 const Photo = mongoose.model('Photo' , photoSchema);
