@@ -26,7 +26,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(auth);
 app.use(routes);
-app.use(errorHandler);
+// app.use(errorHandler);
 
 
 app.listen(3000, console.log('Server is listeningon port 3000'));
