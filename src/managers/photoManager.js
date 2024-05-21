@@ -15,3 +15,6 @@ exports.addComment = async (photoId, commentData) => {
     photo.comments.push(commentData);
     return photo.save()
 }; 
+
+
+exports.getByOwner = (userId) => Photo.find({owner: userId});
