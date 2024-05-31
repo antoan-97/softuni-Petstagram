@@ -63,7 +63,7 @@ router.post('/:photoId/edit', isAuth, async (req, res) => {
         const photo = await photoManager.edit(photoId, photoData);
         res.redirect(`/photos/${photoId}/details`);
     } catch (err) {
-        res.render('photos/edit', { error: getErrorMessage(err) });
+        res.render('photos/edit', { photo:{ ...photoData, _id: photoId }, error: getErrorMessage(err) });
     }
 
 
