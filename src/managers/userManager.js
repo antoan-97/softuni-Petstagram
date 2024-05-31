@@ -7,7 +7,7 @@ const { SECRET } = require('../config/config');
 exports.register = async (userData) => {
     const user = await User.findOne({ username: userData.username });
     if (user) {
-        throw new error('Username already exists');
+        throw new Error('Username already exists');
     }
     const createdUser = await User.create(userData);
     const token = await generateToken(createdUser);
