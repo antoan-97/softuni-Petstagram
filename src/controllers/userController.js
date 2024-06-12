@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const userManager = require('../managers/userManager');
 const { getErrorMessage } = require('../utils/errorHelper');
+const { isLoggedIn } = require('../middlewares/authMiddleware')
 
 
 router.get('/login', isLoggedIn, (req, res) => {
