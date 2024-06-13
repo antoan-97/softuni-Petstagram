@@ -1,6 +1,6 @@
 const { getErrorMessage } = require('../utils/errorHelper');
 const photoManager = require('../managers/photoManager');
-const { isAuth } = require('../middlewares/authMiddleware');
+const { isAuth, isOwner } = require('../middlewares/authMiddleware');
 
 const router = require('express').Router();
 
@@ -34,7 +34,7 @@ router.get('/:photoId/details', async (req, res) => {
     res.render('photos/details', { photo, isOwner });
 })
 
-router.get('/:photoId/delete', isAuth, async (req, res) => {
+router.get('/:photoId/delete', isAuth, isOwner, async (req, res) => {
     const photoId = req.params.photoId;
 
     try {
@@ -48,14 +48,14 @@ router.get('/:photoId/delete', isAuth, async (req, res) => {
 });
 
 
-router.get('/:photoId/edit', isAuth, async (req, res) => {
+router.get('/:photoId/edit', isAuth, isOwner, async (req, res) => {
     const photoId = req.params.photoId;
 
     const photo = await photoManager.getOne(photoId).lean();
     res.render('photos/edit', { photo });
 });
 
-router.post('/:photoId/edit', isAuth, async (req, res) => {
+router.post('/:photoId/edit', isAuth, isOwner, async (req, res) => {
     const photoData = req.body;
     const photoId = req.params.photoId;
 
