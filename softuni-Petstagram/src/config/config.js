@@ -1,2 +1,0 @@
-
-exports.SECRET = 'somebigsecret';
